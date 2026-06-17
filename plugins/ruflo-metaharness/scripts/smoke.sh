@@ -191,6 +191,27 @@ grep -q "execCli(\[\s*'-y'\s*,\s*'metaharness@latest'" "$F" 2>/dev/null || \
 grep -q "cwd: opts" "$F" || miss="$miss no-cwd-passthrough"
 [[ -z "$miss" ]] && ok || bad "$miss"
 
+step "17z57. every CLI subcommand documented in CLAUDE.md (iter 94)"
+miss=""
+# Companion to iter-93's MCP-tool documentation gate. CLAUDE.md also
+# serves as a CLI catalog — each subcommand from metaharness.ts's
+# SUBCOMMANDS map should appear as `npx ruflo metaharness <X>` for
+# discoverability.
+DISP="$ROOT/../../v3/@claude-flow/cli/src/commands/metaharness.ts"
+CMD="$ROOT/../../CLAUDE.md"
+# Extract SUBCOMMANDS keys (both quoted + unquoted forms).
+# BSD sed (macOS) doesn't recognize \s; use [ \t] for portability.
+KEYS=$(grep -E "^[ 	]+('?[a-z-]+'?):[ 	]*'[a-z-]+\.mjs'" "$DISP" 2>/dev/null \
+  | sed -E "s/^[ 	]+'?([a-z-]+)'?:.*/\1/" | sort -u)
+COUNT=0
+for k in $KEYS; do
+  COUNT=$((COUNT + 1))
+  grep -qE "npx ruflo metaharness ${k}([ \\\\]|$)" "$CMD" 2>/dev/null \
+    || miss="$miss subcommand-${k}-not-in-claude-md"
+done
+[[ "$COUNT" == "10" ]] || miss="$miss subcommand-count-stale:$COUNT-expected-10"
+[[ -z "$miss" ]] && ok || bad "$miss"
+
 step "17z56. every MCP tool documented in CLAUDE.md (iter 93)"
 miss=""
 # CLAUDE.md is the agent-facing tool catalog. Each MCP tool registered
