@@ -76,7 +76,7 @@ There are **two different install paths** with very different surface areas. Pic
 This adds slash commands and agent definitions only. The Ruflo MCP server is NOT registered, so `memory_store`, `swarm_init`, `agent_spawn`, etc. won't be callable from Claude. For the full loop, use Path B below.
 
 <details>
-<summary><strong>🔌 All 34 plugins</strong></summary>
+<summary><strong>🔌 All 35 plugins</strong></summary>
 
 #### Core & Orchestration
 
@@ -133,6 +133,7 @@ This adds slash commands and agent definitions only. The Ruflo MCP server is NOT
 | [**ruflo-ddd**](plugins/ruflo-ddd/README.md) | Scaffold domain-driven design — contexts, aggregates, events |
 | [**ruflo-sparc**](plugins/ruflo-sparc/README.md) | Guided 5-phase development methodology with quality gates |
 | [**ruflo-metaharness**](plugins/ruflo-metaharness/README.md) | Grade your agent setup, scan tool configs for security risks, and track changes over time ([guide](docs/metaharness-user-guide.md)) |
+| [**ruflo-arena**](plugins/ruflo-arena/README.md) | Competitive ruliology — pit agent strategies against each other in tournaments, hill-climb and co-evolve the winners (ADR-147/148) |
 
 #### DevOps & Observability
 
