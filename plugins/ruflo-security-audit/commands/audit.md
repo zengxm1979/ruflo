@@ -15,4 +15,4 @@ Steps:
 3. `npx @claude-flow/cli@latest security threats --model stride --export md`
 
 Store findings in memory for pattern training:
-`npx @claude-flow/cli@latest memory store --namespace security --key "audit-YYYY-MM-DD" --value "FINDINGS_SUMMARY"`
+`npx @claude-flow/cli@latest memory store --namespace security-findings --key "audit-YYYY-MM-DD" --value "FINDINGS_SUMMARY"`

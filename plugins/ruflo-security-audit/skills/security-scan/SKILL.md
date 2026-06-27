@@ -19,6 +19,6 @@ npx @claude-flow/cli@latest security threats --model stride --export md
 | standard | + Input validation, path traversal, secrets |
 | deep | + Threat modeling, injection vectors, auth flows |
 
-Store findings via MCP: `mcp__claude-flow__memory_store({ key: "scan-findings", value: "SUMMARY", namespace: "security" })`
+Store findings via MCP: `mcp__claude-flow__memory_store({ key: "scan-findings", value: "SUMMARY", namespace: "security-findings" })`
 
 Train patterns: `mcp__claude-flow__hooks_post-task({ taskId: "security-scan", success: true, storeResults: true })`
